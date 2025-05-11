@@ -203,13 +203,13 @@ Select
 	Category
 From Retail_sales
 Group By category
+
 '''
 
 /* 10. Write a SQL query to create each shift and number of orders 
 (Example Morning <12, Afternoon Between 12 & 17, Evening >17)*/
 
-'''SQL
-With Hourly_sales
+'''SQLWith Hourly_sales
 As
 (
 Select *,
