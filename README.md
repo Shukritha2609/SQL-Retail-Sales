@@ -68,13 +68,16 @@ WHERE
 -- Data Exploration
 
 -- How Many Sales We have?
+'''SQL
 Select count(*) as total_sales from Retail_sales
-
+'''
 -- How Many Customers do we have?
+'''SQL
 Select Count(Distinct customer_id) as Total_Customer from Retail_sales
-
+'''
+'''SQL
 Select Distinct Category from Retail_sales
-
+'''
 -- Data Analysis & Business Key Problem & Answers
 -- Data Analysis & Business Key Problems & Answers
 
@@ -93,17 +96,22 @@ Select Distinct Category from Retail_sales
 
 -- 1. Write a SQL Query to retrieve all columns for Sales made on "2022-11-05"
 
+'''SQL
 Select * from Retail_sales where sale_date = '2022-11-05';
+'''
 
 /* 2. Write a SQL query to retrieve all transactions where the Category is 
 'Clothing' and the Quantity Sold is more than 10 or 4 in the month of nov-2022 */
 
+'''SQL
 Select * 
 from Retail_sales 
 where category = 'Clothing' 
 and quantiy > 10 
 and sale_date between '2022-11-01' and '2022-11-30'
+'''
 
+'''SQL
 Select *
 From Retail_sales
 Where category = 'Clothing'
@@ -111,31 +119,39 @@ Where category = 'Clothing'
 	to_char(sale_date,'YYYY-MM') = '2022-11'
 	and
 	quantiy >= 4
+ '''
 
 -- 3. Writw a SQL query to calculate total_sale for each cateogory
 
+'''SQL
 Select 
 	sum(total_sale), 
 	category,
 	Count(*) as Total_orders
 from Retail_sales 
 group by category
+'''
 
 -- 4. Write a SQL query to findthe average age of Customers who purchased items from the 'Beauty' Category
 
+'''SQL
 Select 
 	round(avg(age)) as AVG_AGE
 from Retail_sales
 where category = 'Beauty'
+'''
 
 -- 5. Write a SQL query to find all the transaction wherethe total sales is greater than 1000.
 
+'''SQL
 Select *
 from Retail_sales
 where total_sale >=1000
+'''
 
 --  6. Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
 
+'''SQL
 Select 
 	category,
 	Count(transactions_id) as Total_transaction,
@@ -144,9 +160,11 @@ from Retail_Sales
 Group by gender, 
 		 category
 order by category
+'''
 
 -- 7. Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
 
+'''SQL
 SELECT 
        year,
        month,
@@ -162,9 +180,11 @@ FROM Retail_sales
 GROUP BY 1, 2
 ) as t1
 WHERE rank = 1
+'''
 
 -- 8. Write a SQL query to find the top 5 customers based on the highest total sales 
 
+'''SQL
 Select 
 	customer_id,
 	Sum(total_sale) as Total_sales,
@@ -173,21 +193,22 @@ Select
 from Retail_sales 
 Group by customer_id
 limit 5
+'''
 
 -- 9. Write a SQL query to find the number of unique customers who purchased items from each category.
 
---Code
+'''SQL
 Select 
 	Count(Distinct customer_id) as Unique_Customer,
 	Category
 From Retail_sales
 Group By category
+'''
 
 /* 10. Write a SQL query to create each shift and number of orders 
 (Example Morning <12, Afternoon Between 12 & 17, Evening >17)*/
 
---Code
-
+'''SQL
 With Hourly_sales
 As
 (
@@ -204,6 +225,7 @@ Select
 	Count(*) as Total_Orders
 from Hourly_sales
 Group by Shift
+'''
 
 -- End of Project
 
