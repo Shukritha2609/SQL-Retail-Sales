@@ -176,6 +176,7 @@ limit 5
 
 -- 9. Write a SQL query to find the number of unique customers who purchased items from each category.
 
+--Code
 Select 
 	Count(Distinct customer_id) as Unique_Customer,
 	Category
@@ -184,6 +185,8 @@ Group By category
 
 /* 10. Write a SQL query to create each shift and number of orders 
 (Example Morning <12, Afternoon Between 12 & 17, Evening >17)*/
+
+--Code
 
 With Hourly_sales
 As
